@@ -1,0 +1,47 @@
+# Use root/example as user/password credentials
+version: "3.9"
+services:
+
+  mongo36:
+    image: mongo:3.6
+    restart: always    
+    ports:
+      - 27036:27036
+    command: mongod --bind_ip 0.0.0.0 --port 27036 --replSet rsTest 
+    hostname: mongo36
+    volumes:
+      - ./volumes/mongo36/data:/data/dbs
+      # - ./volumes/mongo36/log:/var/log/mongodb
+  
+  mongo40:
+    image: mongo:4.0
+    restart: always    
+    ports:
+      - 27040:27040
+    command: mongod --bind_ip 0.0.0.0 --port 27040 --replSet rsTest 
+    hostname: mongo40
+    volumes:
+      - ./volumes/mongo40/data:/data/db
+      # - ./volumes/mongo40/log:/var/log/mongodb
+
+  mongo44:
+    image: mongo:4.4
+    restart: always    
+    ports:
+      - 27044:27044
+    command: mongod --bind_ip 0.0.0.0 --port 27044 --replSet rsTest 
+    hostname: mongo44
+    volumes:
+      - ./volumes/mongo44/data:/data/db
+      # - ./volumes/mongo44/log:/var/log/mongodb
+
+  mongo50:
+    image: mongo:5.0
+    restart: always    
+    ports:
+      - 27050:27050
+    command: mongod --bind_ip 0.0.0.0 --port 27050 --replSet rsTest 
+    hostname: mongo50
+    volumes:
+      - ./volumes/mongo50/data:/data/db
+      # - ./volumes/mongo50/log:/var/log/mongodb
